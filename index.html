@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="confirmation.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <nav>
+        <button id="myBtn" class="button">Click Me 1</button>
+        <button id="myBtn1" class="button">Click Me 2</button>
+        <button id="myBtn3" class="button">Click Me 3</button>
+        <button id="myBtn4" class="button">Click Me 4</button>
+
+        <button id="myBtn5" class="button">Click Me 5</button>
+    </nav>
+
+    <section>
+        <p id="result"></p>
+    </section>
+
+    <script src="confirmation.js"></script>
+    <script>
+        confirmModal = confirmInit("myModal")
+        addConfirmButton(confirmModal, "myBtn")
+        addConfirmButton(confirmModal, "myBtn1")
+        addConfirmButton(confirmModal, "myBtn3")
+        addConfirmButton(confirmModal, "myBtn4")
+        addConfirmButton(confirmModal, "myBtn5")
+
+        document.addEventListener('confirm.onConfirm', function (event) {
+            const eventButton = document.getElementById(event.detail.btnId)
+            if (event.detail.status) {
+                // user clicked on yes button
+                document.getElementById("result").innerHTML = `You just clicked "Yes" in ${eventButton.innerHTML}`;
+            } else {
+                // user clicked on yes button
+                document.getElementById("result").innerHTML = `You just clicked "Cancel" in ${eventButton.innerHTML}`;
+            }
+        });
+    </script>
+</body>
+
+</html>
